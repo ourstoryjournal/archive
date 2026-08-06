@@ -1,0 +1,1549 @@
+/* ==========================================================
+   ARCHIVE v1.0
+   Part 1
+   ========================================================== */
+
+/* =========================
+   GOOGLE FONTS
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* =========================
+   RESET
+========================= */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:linear-gradient(135deg,#fff8f3,#fffefb,#f4f8ff);
+
+    color:#222;
+
+    overflow-x:hidden;
+
+    line-height:1.7;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+button{
+
+    font-family:inherit;
+
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+
+    --blue:#4F8EF7;
+
+    --pink:#FF6B9E;
+
+    --orange:#F9A826;
+
+    --green:#3CB371;
+
+    --purple:#9C6ADE;
+
+    --red:#EF476F;
+
+    --teal:#00BFA6;
+
+    --cyan:#2AA7A1;
+
+    --text:#222;
+
+    --muted:#666;
+
+    --white:#ffffff;
+
+    --shadow:
+
+        0 18px 45px rgba(0,0,0,.08);
+
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:70px 30px;
+
+}
+
+.hero-content{
+
+    width:min(900px,100%);
+
+}
+
+.hero-top{
+
+    text-transform:uppercase;
+
+    letter-spacing:5px;
+
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:30px;
+
+}
+
+.hero h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:88px;
+
+    font-weight:600;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.hero-subtitle{
+
+    font-size:22px;
+
+    color:#666;
+
+    max-width:760px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+}
+
+.explore-btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:60px;
+
+    padding:18px 48px;
+
+    border-radius:60px;
+
+    background:var(--blue);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 18px 45px rgba(79,142,247,.35);
+
+}
+
+.explore-btn:hover{
+
+    transform:translateY(-6px);
+
+}
+
+/* =========================
+   HOME
+========================= */
+
+#sections{
+
+    width:min(1300px,100%);
+
+    margin:auto;
+
+    padding:90px 40px;
+
+}
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-heading h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:60px;
+
+    margin-bottom:15px;
+
+}
+
+.section-heading p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:36px;
+
+    transition:.35s;
+
+    box-shadow:var(--shadow);
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:8px;
+
+    background:var(--blue);
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+        0 28px 60px rgba(0,0,0,.12);
+
+}
+
+.card svg{
+
+    width:48px;
+
+    height:48px;
+
+    margin-bottom:22px;
+
+}
+
+.card h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:36px;
+
+    margin-bottom:14px;
+
+}
+
+.card p{
+
+    color:#666;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+}
+
+/* =========================
+   CARD COLORS
+========================= */
+
+.journal::before{
+
+    background:var(--blue);
+
+}
+
+.story::before{
+
+    background:var(--pink);
+
+}
+
+.memories::before{
+
+    background:var(--orange);
+
+}
+
+.gallery::before{
+
+    background:var(--green);
+
+}
+
+.letters::before{
+
+    background:var(--purple);
+
+}
+
+.week::before{
+
+    background:var(--red);
+
+}
+
+.links::before{
+
+    background:var(--teal);
+
+}
+
+.timeline::before{
+
+    background:var(--cyan);
+
+}
+
+/* =========================
+   COMMON PAGE
+========================= */
+
+.page{
+
+    width:min(950px,100%);
+
+    margin:auto;
+
+    padding:80px 30px;
+
+}
+
+.page-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.page-title h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+}
+
+.page-title p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+/* ==========================================================
+   ARCHIVE v1.0
+   Part 2
+   ========================================================== */
+
+
+/* =========================
+   JOURNAL
+========================= */
+
+.journal-entry{
+
+    background:var(--white);
+
+    border-radius:32px;
+
+    padding:50px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:45px;
+
+}
+
+.entry-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    color:#888;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+}
+
+.journal-entry h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:48px;
+
+    margin-bottom:25px;
+
+}
+
+.journal-entry p{
+
+    font-size:18px;
+
+    color:#555;
+
+    line-height:2;
+
+    margin-bottom:25px;
+
+}
+
+
+/* =========================
+   MOOD TAG
+========================= */
+
+.mood{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#eef4ff;
+
+    color:var(--blue);
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    margin-top:10px;
+
+}
+
+
+/* =========================
+   PHOTO GRID
+========================= */
+
+.photo-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:40px;
+
+}
+
+.photo{
+
+    aspect-ratio:1;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    background:#ececec;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.photo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.photo:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+/* =========================
+   SONG CARD
+========================= */
+
+.song-card{
+
+    margin-top:45px;
+
+    background:linear-gradient(135deg,#4F8EF7,#739EFF);
+
+    border-radius:28px;
+
+    color:white;
+
+    padding:30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.song-info small{
+
+    display:block;
+
+    opacity:.8;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+
+}
+
+.song-info h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.song-info p{
+
+    opacity:.9;
+
+}
+
+.song-button{
+
+    width:72px;
+
+    height:72px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:var(--blue);
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.song-button:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+.gallery-item{
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:white;
+
+    box-shadow:var(--shadow);
+
+}
+
+.gallery-item img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.gallery-item:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.gallery-caption{
+
+    padding:20px;
+
+}
+
+
+/* =========================
+   LETTERS
+========================= */
+
+.letter{
+
+    background:#fffdf8;
+
+    border-left:8px solid var(--pink);
+
+    padding:45px;
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:35px;
+
+}
+
+.letter h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.letter p{
+
+    line-height:2;
+
+    color:#555;
+
+}
+
+
+/* =========================
+   MEMORY CARD
+========================= */
+
+.memory{
+
+    background:white;
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:40px;
+
+}
+
+.memory img{
+
+    width:100%;
+
+    height:350px;
+
+    object-fit:cover;
+
+}
+
+.memory-content{
+
+    padding:35px;
+
+}
+
+.memory-content h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:36px;
+
+    margin-bottom:15px;
+
+}
+
+.memory-content p{
+
+    color:#666;
+
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.link-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+}
+
+.link-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.link-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    background:#eef4ff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+
+    position:relative;
+
+    padding-left:40px;
+
+}
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:10px;
+
+    top:0;
+
+    bottom:0;
+
+    width:3px;
+
+    background:#ddd;
+
+}
+
+.timeline-item{
+
+    position:relative;
+
+    margin-bottom:50px;
+
+}
+
+.timeline-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-38px;
+
+    top:8px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:var(--blue);
+
+}
+
+.timeline-item h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.timeline-item p{
+
+    color:#666;
+
+}
+
+/* ==========================================================
+   ARCHIVE v1.0
+   Part 3 (Final)
+   ========================================================== */
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+.page-nav{
+
+    width:min(1200px,100%);
+
+    margin:auto;
+
+    padding:30px 30px 0;
+
+}
+
+.back-link{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:var(--muted);
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.back-link:hover{
+
+    color:var(--blue);
+
+    transform:translateX(-4px);
+
+}
+
+
+/* =========================
+   DIVIDERS
+========================= */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:#ececec;
+
+    margin:60px 0;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:16px 34px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:var(--blue);
+
+    color:white;
+
+    box-shadow:
+
+        0 16px 40px rgba(79,142,247,.3);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.btn-secondary{
+
+    background:white;
+
+    color:var(--text);
+
+    border:1px solid #ddd;
+
+}
+
+.btn-secondary:hover{
+
+    background:#fafafa;
+
+}
+
+
+/* =========================
+   TAGS
+========================= */
+
+.tag{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:40px;
+
+    background:#f4f4f4;
+
+    color:#555;
+
+    font-size:14px;
+
+    margin-right:10px;
+
+    margin-top:10px;
+
+}
+
+
+/* =========================
+   QUOTES
+========================= */
+
+.quote{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    line-height:1.5;
+
+    text-align:center;
+
+    color:#444;
+
+    margin:80px auto;
+
+    max-width:700px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    margin-top:120px;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    color:#777;
+
+    border-top:1px solid #ececec;
+
+}
+
+footer h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+footer p{
+
+    font-size:15px;
+
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.fade-up{
+
+    animation:fadeUp .8s ease both;
+
+}
+
+.fade{
+
+    animation:fade .8s ease both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f7f7f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#d4d4d4;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#bcbcbc;
+
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.mt-20{
+
+    margin-top:20px;
+
+}
+
+.mt-40{
+
+    margin-top:40px;
+
+}
+
+.mt-60{
+
+    margin-top:60px;
+
+}
+
+.mb-20{
+
+    margin-bottom:20px;
+
+}
+
+.mb-40{
+
+    margin-bottom:40px;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:992px){
+
+    .hero h1{
+
+        font-size:64px;
+
+    }
+
+    .hero-subtitle{
+
+        font-size:19px;
+
+    }
+
+    .page-title h1{
+
+        font-size:54px;
+
+    }
+
+    .journal-entry{
+
+        padding:35px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .hero{
+
+        padding:50px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:48px;
+
+    }
+
+    .hero-subtitle{
+
+        font-size:17px;
+
+    }
+
+    .section-heading h2{
+
+        font-size:44px;
+
+    }
+
+    .page-title h1{
+
+        font-size:42px;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .photo-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .song-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .entry-top{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .timeline{
+
+        padding-left:25px;
+
+    }
+
+    .timeline-item::before{
+
+        left:-23px;
+
+    }
+
+}
+
+@media (max-width:500px){
+
+    .hero h1{
+
+        font-size:40px;
+
+    }
+
+    .card{
+
+        padding:28px;
+
+    }
+
+    .journal-entry{
+
+        padding:25px;
+
+    }
+
+    .memory img{
+
+        height:240px;
+
+    }
+
+    .song-button{
+
+        width:60px;
+
+        height:60px;
+
+    }
+
+}
+
+/* ==========================================================
+   JOURNAL LIST
+========================================================== */
+
+.journal-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:35px;
+
+}
+
+.journal-card{
+
+    background:#fff;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.journal-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 22px 55px rgba(0,0,0,.12);
+
+}
+
+.journal-card-date{
+
+    color:#888;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+.journal-card h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:46px;
+
+    margin-bottom:18px;
+
+}
+
+.journal-card p{
+
+    color:#666;
+
+    line-height:1.9;
+
+    margin-bottom:28px;
+
+}
+
+.journal-card-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    font-size:15px;
+
+    color:#777;
+
+}
+
+.journal-card-footer a{
+
+    color:var(--blue);
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.journal-card-footer a:hover{
+
+    transform:translateX(6px);
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .journal-card{
+
+        padding:28px;
+
+    }
+
+    .journal-card h2{
+
+        font-size:36px;
+
+    }
+
+    .journal-card-footer{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}
+/* ==========================================================
+   END OF FILE
+   ========================================================== */
