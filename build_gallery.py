@@ -1,15 +1,27 @@
 from pathlib import Path
 from PIL import Image, ImageOps
-import shutil
 
 # ==========================================================
 # CONFIGURATION
 # ==========================================================
 
-ORIGINALS = Path("assets/originals")
+# Folder containing your ORIGINAL full-quality photos.
+# This can be anywhere on your computer.
+
+ORIGINALS = Path(r"D:\originals")
+
+# Output folders (inside website)
+
 GALLERY = Path("assets/gallery")
 THUMBS = Path("assets/thumbs")
+
+# Gallery page
+
 OUTPUT_HTML = Path("pages/gallery.html")
+
+# ==========================================================
+# IMAGE SETTINGS
+# ==========================================================
 
 MAX_IMAGE_SIZE = 1920
 THUMB_SIZE = 500
@@ -26,7 +38,7 @@ SUPPORTED = {
 }
 
 # ==========================================================
-# CREATE REQUIRED FOLDERS
+# CREATE OUTPUT FOLDERS
 # ==========================================================
 
 GALLERY.mkdir(parents=True, exist_ok=True)
@@ -43,37 +55,35 @@ failed = 0
 gallery_items = ""
 
 # ==========================================================
-# IMAGE OPTIMIZER
+# OPTIMIZE SINGLE IMAGE
 # ==========================================================
 
-def optimize_image(source_path: Path):
+def optimize_image(source: Path):
 
     global processed
     global skipped
     global failed
 
-    output_path = GALLERY / source_path.name
-    thumb_path = THUMBS / source_path.name
+    gallery_file = GALLERY / source.name
+    thumb_file = THUMBS / source.name
 
-    # Skip files already processed
-    if output_path.exists() and thumb_path.exists():
+    if gallery_file.exists() and thumb_file.exists():
 
         skipped += 1
         return
 
     try:
 
-        image = Image.open(source_path)
+        image = Image.open(source)
 
-        # Correct phone orientation
         image = ImageOps.exif_transpose(image)
 
-        # Convert to RGB if necessary
         if image.mode not in ("RGB", "L"):
 
             image = image.convert("RGB")
 
-        # --------------------------------------------------
+
+                    # --------------------------------------------------
         # OPTIMIZED IMAGE
         # --------------------------------------------------
 
@@ -85,7 +95,7 @@ def optimize_image(source_path: Path):
         )
 
         full.save(
-            output_path,
+            gallery_file,
             quality=JPEG_QUALITY,
             optimize=True,
             progressive=True
@@ -103,7 +113,7 @@ def optimize_image(source_path: Path):
         )
 
         thumb.save(
-            thumb_path,
+            thumb_file,
             quality=THUMB_QUALITY,
             optimize=True,
             progressive=True
@@ -115,12 +125,12 @@ def optimize_image(source_path: Path):
 
         failed += 1
 
-        print(f"Failed: {source_path.name}")
+        print(f"Failed: {source.name}")
 
         print(e)
 
-        # ==========================================================
-# PROCESS EVERY IMAGE
+# ==========================================================
+# PROCESS ALL IMAGES
 # ==========================================================
 
 print("\nOptimizing images...\n")
@@ -131,7 +141,10 @@ for file in sorted(ORIGINALS.iterdir()):
 
         optimize_image(file)
 
-print("Finished image optimization.\n")
+print("\nFinished optimizing images.\n")
+print(f"Processed : {processed}")
+print(f"Skipped   : {skipped}")
+print(f"Failed    : {failed}")
 
 # ==========================================================
 # BUILD GALLERY HTML
@@ -139,9 +152,9 @@ print("Finished image optimization.\n")
 
 optimized_images = sorted(GALLERY.iterdir())
 
-for image in optimized_images:
+gallery_items = ""
 
-    thumb = THUMBS / image.name
+for image in optimized_images:
 
     gallery_items += f"""
     <a href="../assets/gallery/{image.name}"
@@ -149,19 +162,18 @@ for image in optimized_images:
        target="_blank">
 
         <img
-            src="../assets/thumbs/{thumb.name}"
+            src="../assets/thumbs/{image.name}"
             alt="{image.stem}"
             loading="lazy">
 
     </a>
 """
 
-# ==========================================================
-# COMPLETE HTML PAGE
+    # ==========================================================
+# GENERATE HTML
 # ==========================================================
 
 html = f"""<!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -194,56 +206,56 @@ href="../style.css">
 
 <nav class="page-nav">
 
-<a href="../index.html"
-class="back-link">
+    <a href="../index.html"
+       class="back-link">
 
-<i data-lucide="arrow-left"></i>
+        <i data-lucide="arrow-left"></i>
 
-Back to Archive
+        Back to Archive
 
-</a>
+    </a>
 
 </nav>
 
 <main class="page fade-up">
 
-<div class="page-title">
+    <div class="page-title">
 
-<h1>
+        <h1>
 
-Gallery
+            Gallery
 
-</h1>
+        </h1>
 
-<p>
+        <p>
 
-{len(optimized_images)} memories preserved.
+            {len(optimized_images)} memories preserved.
 
-</p>
+        </p>
 
-</div>
+    </div>
 
-<section class="gallery-grid">
+    <section class="gallery-grid">
 
-{gallery_items}
+        {gallery_items}
 
-</section>
+    </section>
 
 </main>
 
 <footer>
 
-<h3>
+    <h3>
 
-Archive
+        Archive
 
-</h3>
+    </h3>
 
-<p>
+    <p>
 
-Every memory has a place.
+        Every memory has a place.
 
-</p>
+    </p>
 
 </footer>
 
@@ -259,3 +271,34 @@ lucide.createIcons();
 
 </html>
 """
+
+# ==========================================================
+# WRITE HTML FILE
+# ==========================================================
+
+OUTPUT_HTML.write_text(
+    html,
+    encoding="utf-8"
+)
+
+# ==========================================================
+# FINAL SUMMARY
+# ==========================================================
+
+print("=" * 60)
+print("Gallery successfully generated!")
+print("=" * 60)
+
+print(f"Gallery HTML : {OUTPUT_HTML}")
+print(f"Images       : {len(optimized_images)}")
+print(f"Processed    : {processed}")
+print(f"Skipped      : {skipped}")
+print(f"Failed       : {failed}")
+
+gallery_size = sum(f.stat().st_size for f in GALLERY.iterdir()) / (1024 * 1024)
+thumb_size = sum(f.stat().st_size for f in THUMBS.iterdir()) / (1024 * 1024)
+
+print(f"Gallery Size : {gallery_size:.2f} MB")
+print(f"Thumb Size   : {thumb_size:.2f} MB")
+
+print("=" * 60)
